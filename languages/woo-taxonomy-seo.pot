@@ -1,0 +1,126 @@
+# Copyright (C) 2024 Tokayah
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Taxonomy SEO 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/tokayah/woo-taxonomy-seo/issues\n"
+"POT-Creation-Date: 2024-01-01T00:00:00+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: WP-CLI\n"
+"X-Domain: woo-taxonomy-seo\n"
+
+#: woo-taxonomy-seo.php:82
+msgid "SEO Title"
+msgstr ""
+
+#: woo-taxonomy-seo.php:83
+msgid "Custom title tag for this taxonomy. Leave empty to use the default."
+msgstr ""
+
+#: woo-taxonomy-seo.php:86
+msgid "Enter SEO title (recommended: 50-60 characters)"
+msgstr ""
+
+#: woo-taxonomy-seo.php:89
+msgid "Meta Description"
+msgstr ""
+
+#: woo-taxonomy-seo.php:90
+msgid "Custom meta description for search engines. Recommended: 150-160 characters."
+msgstr ""
+
+#: woo-taxonomy-seo.php:93
+msgid "Enter meta description (recommended: 150-160 characters)"
+msgstr ""
+
+#: woo-taxonomy-seo.php:96
+msgid "Canonical URL"
+msgstr ""
+
+#: woo-taxonomy-seo.php:97
+msgid "Custom canonical URL. Leave empty to use the default taxonomy URL."
+msgstr ""
+
+#: woo-taxonomy-seo.php:102
+msgid "Noindex"
+msgstr ""
+
+#: woo-taxonomy-seo.php:103
+msgid "Prevent search engines from indexing this page."
+msgstr ""
+
+#: woo-taxonomy-seo.php:107
+msgid "Nofollow"
+msgstr ""
+
+#: woo-taxonomy-seo.php:108
+msgid "Prevent search engines from following links on this page."
+msgstr ""
+
+#: woo-taxonomy-seo.php:112
+msgid "Open Graph Title"
+msgstr ""
+
+#: woo-taxonomy-seo.php:113
+msgid "Title for social media sharing. Leave empty to use SEO title."
+msgstr ""
+
+#: woo-taxonomy-seo.php:116
+msgid "Enter Open Graph title"
+msgstr ""
+
+#: woo-taxonomy-seo.php:119
+msgid "Open Graph Description"
+msgstr ""
+
+#: woo-taxonomy-seo.php:120
+msgid "Description for social media sharing. Leave empty to use meta description."
+msgstr ""
+
+#: woo-taxonomy-seo.php:123
+msgid "Enter Open Graph description"
+msgstr ""
+
+#: woo-taxonomy-seo.php:126
+msgid "Open Graph Image"
+msgstr ""
+
+#: woo-taxonomy-seo.php:127
+msgid "Image for social media sharing. Recommended: 1200x630 pixels."
+msgstr ""
+
+#: woo-taxonomy-seo.php:186
+#, php-format
+msgid "%s requires WooCommerce to be installed and active."
+msgstr ""
+
+#: woo-taxonomy-seo.php:253
+msgid "SEO Settings"
+msgstr ""
+
+#: woo-taxonomy-seo.php:354
+msgid "Select Image"
+msgstr ""
+
+#: woo-taxonomy-seo.php:357
+msgid "Remove Image"
+msgstr ""
+
+#: woo-taxonomy-seo.php:241
+msgid "Select or Upload Image"
+msgstr ""
+
+#: woo-taxonomy-seo.php:242
+msgid "Use this image"
+msgstr ""
+
+#: woo-taxonomy-seo.php:530
+msgid "Categories"
+msgstr ""
