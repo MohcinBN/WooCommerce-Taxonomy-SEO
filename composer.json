@@ -5,8 +5,7 @@
     "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "Mohcin Bounouara",
-            "homepage": ""
+            "name": "Mohcin Bounouara"
         }
     ],
     "require": {
