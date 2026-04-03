@@ -88,18 +88,60 @@ install_test_suite() {
 
     rm -rf $WP_TESTS_DIR/{includes,data}
 
-    # Use GitHub zip download instead of svn
-    local TESTS_TAG=${WP_TESTS_TAG//tags\//}
-    TESTS_TAG=${TESTS_TAG//branches\//}
+    # Determine the correct branch/tag for test suite
+    local GH_REF="trunk"
+    if [[ $WP_TESTS_TAG == tags/* ]]; then
+        GH_REF="${WP_TESTS_TAG#tags/}"
+    elif [[ $WP_TESTS_TAG == branches/* ]]; then
+        GH_REF="${WP_TESTS_TAG#branches/}"
+    fi
     
-    echo "Downloading WordPress test suite..."
-    download https://github.com/WordPress/wordpress-develop/archive/refs/heads/trunk.zip $TMPDIR/wp-tests.zip
+    echo "Downloading WordPress test suite (ref: $GH_REF)..."
+    
+    # Try tag first, then branch, then trunk
+    local DOWNLOADED=false
+    for ref in "$GH_REF" "trunk"; do
+        local ZIP_URL="https://github.com/WordPress/wordpress-develop/archive/refs/heads/${ref}.zip"
+        if [[ $ref != "trunk" ]]; then
+            ZIP_URL="https://github.com/WordPress/wordpress-develop/archive/refs/tags/${ref}.zip"
+        fi
+        
+        download "$ZIP_URL" "$TMPDIR/wp-tests.zip"
+        
+        if [ -s "$TMPDIR/wp-tests.zip" ] && unzip -t "$TMPDIR/wp-tests.zip" > /dev/null 2>&1; then
+            DOWNLOADED=true
+            break
+        fi
+        
+        # Try as branch if tag failed
+        if [[ $ref != "trunk" ]]; then
+            ZIP_URL="https://github.com/WordPress/wordpress-develop/archive/refs/heads/${ref}.zip"
+            download "$ZIP_URL" "$TMPDIR/wp-tests.zip"
+            if [ -s "$TMPDIR/wp-tests.zip" ] && unzip -t "$TMPDIR/wp-tests.zip" > /dev/null 2>&1; then
+                DOWNLOADED=true
+                break
+            fi
+        fi
+    done
+    
+    if [ "$DOWNLOADED" = false ]; then
+        echo "Failed to download WordPress test suite"
+        exit 1
+    fi
     
     cd $TMPDIR
     unzip -q wp-tests.zip
-    mv wordpress-develop-trunk/tests/phpunit/includes $WP_TESTS_DIR/includes
-    mv wordpress-develop-trunk/tests/phpunit/data $WP_TESTS_DIR/data
-    rm -rf wordpress-develop-trunk wp-tests.zip
+    
+    # Find the extracted directory (name varies based on ref)
+    local EXTRACTED_DIR=$(ls -d wordpress-develop-* 2>/dev/null | head -1)
+    if [ -z "$EXTRACTED_DIR" ]; then
+        echo "Failed to find extracted WordPress develop directory"
+        exit 1
+    fi
+    
+    mv "$EXTRACTED_DIR/tests/phpunit/includes" $WP_TESTS_DIR/includes
+    mv "$EXTRACTED_DIR/tests/phpunit/data" $WP_TESTS_DIR/data
+    rm -rf "$EXTRACTED_DIR" wp-tests.zip
 }
 
 install_db() {
