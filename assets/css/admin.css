@@ -1,0 +1,222 @@
+/**
+ * WooCommerce Taxonomy SEO - Admin Styles
+ *
+ * @package WooTaxonomySEO
+ */
+
+/* SEO Fields Container */
+.wts-seo-fields {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.wts-seo-fields h3 {
+    margin: 0 0 15px;
+    padding: 0 0 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Edit Form Header */
+.wts-seo-header th {
+    padding-top: 30px !important;
+}
+
+.wts-seo-header h2 {
+    margin: 0;
+    padding: 0 0 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+/* Field Styling */
+.wts-field {
+    margin-bottom: 15px;
+}
+
+.wts-field label {
+    font-weight: 500;
+}
+
+.wts-field .description {
+    margin-top: 5px;
+    font-style: italic;
+    color: #666;
+}
+
+/* Input Fields */
+.wts-input {
+    width: 100%;
+    max-width: 600px;
+}
+
+textarea.wts-input {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Character Counter */
+.wts-char-count {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 2px 8px;
+    background: #f0f0f0;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #666;
+    vertical-align: middle;
+}
+
+.wts-char-count.wts-warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.wts-char-count.wts-danger {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Checkbox Field */
+.wts-checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.wts-checkbox-label input[type="checkbox"] {
+    margin: 0;
+}
+
+/* Image Field */
+.wts-image-field {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.wts-image-preview {
+    flex: 0 0 150px;
+    max-width: 150px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.wts-image-preview img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.wts-upload-image,
+.wts-remove-image {
+    flex: 0 0 auto;
+}
+
+.wts-remove-image {
+    color: #a00;
+}
+
+.wts-remove-image:hover {
+    color: #dc3232;
+    border-color: #dc3232;
+}
+
+/* SEO Preview Box */
+.wts-seo-preview {
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.wts-seo-preview h4 {
+    margin: 0 0 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.wts-preview-title {
+    margin: 0 0 5px;
+    font-size: 18px;
+    color: #1a0dab;
+    line-height: 1.3;
+    word-wrap: break-word;
+}
+
+.wts-preview-url {
+    margin: 0 0 5px;
+    font-size: 14px;
+    color: #006621;
+    line-height: 1.3;
+}
+
+.wts-preview-description {
+    margin: 0;
+    font-size: 13px;
+    color: #545454;
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media screen and (max-width: 782px) {
+    .wts-input {
+        max-width: 100%;
+    }
+
+    .wts-image-field {
+        flex-direction: column;
+    }
+
+    .wts-image-preview {
+        flex: 0 0 auto;
+        max-width: 200px;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .wts-seo-fields {
+        background: #2c3338;
+        border-color: #3c434a;
+    }
+
+    .wts-seo-fields h3 {
+        border-color: #3c434a;
+        color: #f0f0f1;
+    }
+
+    .wts-seo-header h2 {
+        border-color: #3c434a;
+        color: #f0f0f1;
+    }
+
+    .wts-char-count {
+        background: #3c434a;
+        color: #a7aaad;
+    }
+
+    .wts-image-preview {
+        border-color: #3c434a;
+        background: #2c3338;
+    }
+
+    .wts-seo-preview {
+        background: #2c3338;
+        border-color: #3c434a;
+    }
+}
