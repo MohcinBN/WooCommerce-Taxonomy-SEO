@@ -1,8 +1,8 @@
-=== WooCommerce Taxonomy SEO ===
-Contributors: Mohcin Bounouara
-Tags: woocommerce, seo, product categories, product tags, meta description
+=== Taxonomy SEO for WooCommerce ===
+Contributors: mohcinbn
+Tags: seo, product categories, product tags, meta description, taxonomy
 Requires at least: 5.8
-Tested up to: 6.4
+Tested up to: 6.9
 Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GPLv2 or later
@@ -12,7 +12,7 @@ SEO optimization for WooCommerce product categories and tags. Add custom meta ti
 
 == Description ==
 
-**WooCommerce Taxonomy SEO** provides complete SEO control for your WooCommerce product categories and product tags. Unlike general SEO plugins that may not fully support WooCommerce taxonomies, this plugin is specifically designed for e-commerce stores.
+**Taxonomy SEO for WooCommerce** provides complete SEO control for your WooCommerce product categories and product tags. Unlike general SEO plugins that may not fully support WooCommerce taxonomies, this plugin is specifically designed for e-commerce stores.
 
 = Features =
 
@@ -44,7 +44,7 @@ Many SEO plugins provide limited support for WooCommerce product categories and 
 
 == Installation ==
 
-1. Upload the `woo-taxonomy-seo` folder to the `/wp-content/plugins/` directory
+1. Upload the `taxonomy-seo-for-woocommerce` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Go to Products > Categories or Products > Tags to add SEO settings
 
@@ -59,7 +59,7 @@ Many SEO plugins provide limited support for WooCommerce product categories and 
 
 = Does this plugin work with other SEO plugins? =
 
-Yes! WooCommerce Taxonomy SEO is designed to work alongside popular SEO plugins like Yoast SEO and The SEO Framework. It will override their taxonomy settings when you provide custom values.
+Yes! Taxonomy SEO for WooCommerce is designed to work alongside popular SEO plugins like Yoast SEO and The SEO Framework. It will override their taxonomy settings when you provide custom values.
 
 = Will this slow down my site? =
 
@@ -96,11 +96,11 @@ Yes. This plugin does not collect, store, or transmit any personal data. All SEO
 == Upgrade Notice ==
 
 = 1.0.0 =
-Initial release of WooCommerce Taxonomy SEO.
+Initial release of Taxonomy SEO for WooCommerce.
 
 == Privacy Policy ==
 
-WooCommerce Taxonomy SEO does not:
+Taxonomy SEO for WooCommerce does not:
 * Track users
 * Collect personal data
 * Send data to external servers

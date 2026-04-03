@@ -1,21 +1,21 @@
 <?php
 /**
- * Plugin Name: WooCommerce Taxonomy SEO
- * Plugin URI: https://github.com/MohcinBN/WooCommerce-Taxonomy-SEO
+ * Plugin Name: Taxonomy SEO for WooCommerce
+ * Plugin URI: https://github.com/MohcinBN/taxonomy-seo-for-woocommerce
  * Description: SEO optimization for WooCommerce product categories and tags. Add custom meta titles, descriptions, canonical URLs, and robots directives.
  * Version: 1.0.0
  * Requires at least: 5.8
  * Requires PHP: 7.4
- * Author: Tokayah
+ * Author: Mohcin Bounouara
  * Author URI: https://mohcinbounouara.com/
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: woo-taxonomy-seo
+ * Text Domain: taxonomy-seo-for-woocommerce
  * Domain Path: /languages
  * WC requires at least: 5.0
  * WC tested up to: 8.5
  *
- * @package WooTaxonomySEO
+ * @package TaxonomySEOForWooCommerce
  */
 
 // Prevent direct access.
@@ -24,10 +24,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define plugin constants.
-define( 'WOO_TAXONOMY_SEO_VERSION', '1.0.0' );
-define( 'WOO_TAXONOMY_SEO_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-define( 'WOO_TAXONOMY_SEO_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'WOO_TAXONOMY_SEO_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+define( 'TSFW_VERSION', '1.0.0' );
+define( 'TSFW_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'TSFW_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'TSFW_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
 /**
  * Main plugin class.
@@ -85,52 +85,52 @@ final class Woo_Taxonomy_SEO {
     private function define_meta_fields() {
         $this->meta_fields = array(
             'seo_title' => array(
-                'label'       => __( 'SEO Title', 'woo-taxonomy-seo' ),
-                'description' => __( 'Custom title tag for this taxonomy. Leave empty to use the default.', 'woo-taxonomy-seo' ),
+                'label'       => __( 'SEO Title', 'taxonomy-seo-for-woocommerce' ),
+                'description' => __( 'Custom title tag for this taxonomy. Leave empty to use the default.', 'taxonomy-seo-for-woocommerce' ),
                 'type'        => 'text',
                 'maxlength'   => 70,
-                'placeholder' => __( 'Enter SEO title (recommended: 50-60 characters)', 'woo-taxonomy-seo' ),
+                'placeholder' => __( 'Enter SEO title (recommended: 50-60 characters)', 'taxonomy-seo-for-woocommerce' ),
             ),
             'seo_description' => array(
-                'label'       => __( 'Meta Description', 'woo-taxonomy-seo' ),
-                'description' => __( 'Custom meta description for search engines. Recommended: 150-160 characters.', 'woo-taxonomy-seo' ),
+                'label'       => __( 'Meta Description', 'taxonomy-seo-for-woocommerce' ),
+                'description' => __( 'Custom meta description for search engines. Recommended: 150-160 characters.', 'taxonomy-seo-for-woocommerce' ),
                 'type'        => 'textarea',
                 'maxlength'   => 200,
-                'placeholder' => __( 'Enter meta description (recommended: 150-160 characters)', 'woo-taxonomy-seo' ),
+                'placeholder' => __( 'Enter meta description (recommended: 150-160 characters)', 'taxonomy-seo-for-woocommerce' ),
             ),
             'canonical_url' => array(
-                'label'       => __( 'Canonical URL', 'woo-taxonomy-seo' ),
-                'description' => __( 'Custom canonical URL. Leave empty to use the default taxonomy URL.', 'woo-taxonomy-seo' ),
+                'label'       => __( 'Canonical URL', 'taxonomy-seo-for-woocommerce' ),
+                'description' => __( 'Custom canonical URL. Leave empty to use the default taxonomy URL.', 'taxonomy-seo-for-woocommerce' ),
                 'type'        => 'url',
                 'placeholder' => 'https://',
             ),
             'robots_noindex' => array(
-                'label'       => __( 'Noindex', 'woo-taxonomy-seo' ),
-                'description' => __( 'Prevent search engines from indexing this page.', 'woo-taxonomy-seo' ),
+                'label'       => __( 'Noindex', 'taxonomy-seo-for-woocommerce' ),
+                'description' => __( 'Prevent search engines from indexing this page.', 'taxonomy-seo-for-woocommerce' ),
                 'type'        => 'checkbox',
             ),
             'robots_nofollow' => array(
-                'label'       => __( 'Nofollow', 'woo-taxonomy-seo' ),
-                'description' => __( 'Prevent search engines from following links on this page.', 'woo-taxonomy-seo' ),
+                'label'       => __( 'Nofollow', 'taxonomy-seo-for-woocommerce' ),
+                'description' => __( 'Prevent search engines from following links on this page.', 'taxonomy-seo-for-woocommerce' ),
                 'type'        => 'checkbox',
             ),
             'og_title' => array(
-                'label'       => __( 'Open Graph Title', 'woo-taxonomy-seo' ),
-                'description' => __( 'Title for social media sharing. Leave empty to use SEO title.', 'woo-taxonomy-seo' ),
+                'label'       => __( 'Open Graph Title', 'taxonomy-seo-for-woocommerce' ),
+                'description' => __( 'Title for social media sharing. Leave empty to use SEO title.', 'taxonomy-seo-for-woocommerce' ),
                 'type'        => 'text',
                 'maxlength'   => 95,
-                'placeholder' => __( 'Enter Open Graph title', 'woo-taxonomy-seo' ),
+                'placeholder' => __( 'Enter Open Graph title', 'taxonomy-seo-for-woocommerce' ),
             ),
             'og_description' => array(
-                'label'       => __( 'Open Graph Description', 'woo-taxonomy-seo' ),
-                'description' => __( 'Description for social media sharing. Leave empty to use meta description.', 'woo-taxonomy-seo' ),
+                'label'       => __( 'Open Graph Description', 'taxonomy-seo-for-woocommerce' ),
+                'description' => __( 'Description for social media sharing. Leave empty to use meta description.', 'taxonomy-seo-for-woocommerce' ),
                 'type'        => 'textarea',
                 'maxlength'   => 200,
-                'placeholder' => __( 'Enter Open Graph description', 'woo-taxonomy-seo' ),
+                'placeholder' => __( 'Enter Open Graph description', 'taxonomy-seo-for-woocommerce' ),
             ),
             'og_image' => array(
-                'label'       => __( 'Open Graph Image', 'woo-taxonomy-seo' ),
-                'description' => __( 'Image for social media sharing. Recommended: 1200x630 pixels.', 'woo-taxonomy-seo' ),
+                'label'       => __( 'Open Graph Image', 'taxonomy-seo-for-woocommerce' ),
+                'description' => __( 'Image for social media sharing. Recommended: 1200x630 pixels.', 'taxonomy-seo-for-woocommerce' ),
                 'type'        => 'image',
             ),
         );
@@ -144,9 +144,6 @@ final class Woo_Taxonomy_SEO {
     private function init_hooks() {
         // Check if WooCommerce is active.
         add_action( 'plugins_loaded', array( $this, 'check_woocommerce' ) );
-
-        // Load text domain.
-        add_action( 'init', array( $this, 'load_textdomain' ) );
 
         // Admin hooks.
         add_action( 'admin_init', array( $this, 'register_term_meta' ) );
@@ -167,7 +164,7 @@ final class Woo_Taxonomy_SEO {
         add_filter( 'the_seo_framework_title_from_generation', array( $this, 'filter_tsf_title' ), 20 );
 
         // Add settings link to plugins page.
-        add_filter( 'plugin_action_links_' . WOO_TAXONOMY_SEO_PLUGIN_BASENAME, array( $this, 'add_settings_link' ) );
+        add_filter( 'plugin_action_links_' . TSFW_PLUGIN_BASENAME, array( $this, 'add_settings_link' ) );
 
         // Declare HPOS compatibility.
         add_action( 'before_woocommerce_init', array( $this, 'declare_hpos_compatibility' ) );
@@ -196,26 +193,13 @@ final class Woo_Taxonomy_SEO {
                 <?php
                 printf(
                     /* translators: %s: WooCommerce plugin name */
-                    esc_html__( '%s requires WooCommerce to be installed and active.', 'woo-taxonomy-seo' ),
-                    '<strong>WooCommerce Taxonomy SEO</strong>'
+                    esc_html__( '%s requires WooCommerce to be installed and active.', 'taxonomy-seo-for-woocommerce' ),
+                    '<strong>Taxonomy SEO for WooCommerce</strong>'
                 );
                 ?>
             </p>
         </div>
         <?php
-    }
-
-    /**
-     * Load plugin text domain.
-     *
-     * @return void
-     */
-    public function load_textdomain() {
-        load_plugin_textdomain(
-            'woo-taxonomy-seo',
-            false,
-            dirname( WOO_TAXONOMY_SEO_PLUGIN_BASENAME ) . '/languages'
-        );
     }
 
     /**
@@ -267,16 +251,16 @@ final class Woo_Taxonomy_SEO {
 
         wp_enqueue_style(
             'woo-taxonomy-seo-admin',
-            WOO_TAXONOMY_SEO_PLUGIN_URL . 'assets/css/admin.css',
+            TSFW_PLUGIN_URL . 'assets/css/admin.css',
             array(),
-            WOO_TAXONOMY_SEO_VERSION
+            TSFW_VERSION
         );
 
         wp_enqueue_script(
             'woo-taxonomy-seo-admin',
-            WOO_TAXONOMY_SEO_PLUGIN_URL . 'assets/js/admin.js',
+            TSFW_PLUGIN_URL . 'assets/js/admin.js',
             array( 'jquery', 'wp-media-utils' ),
-            WOO_TAXONOMY_SEO_VERSION,
+            TSFW_VERSION,
             true
         );
 
@@ -284,8 +268,8 @@ final class Woo_Taxonomy_SEO {
             'woo-taxonomy-seo-admin',
             'wooTaxonomySEO',
             array(
-                'mediaTitle'  => __( 'Select or Upload Image', 'woo-taxonomy-seo' ),
-                'mediaButton' => __( 'Use this image', 'woo-taxonomy-seo' ),
+                'mediaTitle'  => __( 'Select or Upload Image', 'taxonomy-seo-for-woocommerce' ),
+                'mediaButton' => __( 'Use this image', 'taxonomy-seo-for-woocommerce' ),
             )
         );
     }
@@ -300,7 +284,7 @@ final class Woo_Taxonomy_SEO {
         wp_nonce_field( 'wts_save_term_meta', 'wts_term_meta_nonce' );
         ?>
         <div class="wts-seo-fields">
-            <h3><?php esc_html_e( 'SEO Settings', 'woo-taxonomy-seo' ); ?></h3>
+            <h3><?php esc_html_e( 'SEO Settings', 'taxonomy-seo-for-woocommerce' ); ?></h3>
             <?php
             foreach ( $this->meta_fields as $key => $field ) {
                 $this->render_add_field( $key, $field );
@@ -322,7 +306,7 @@ final class Woo_Taxonomy_SEO {
         ?>
         <tr class="form-field wts-seo-header">
             <th colspan="2">
-                <h2><?php esc_html_e( 'SEO Settings', 'woo-taxonomy-seo' ); ?></h2>
+                <h2><?php esc_html_e( 'SEO Settings', 'taxonomy-seo-for-woocommerce' ); ?></h2>
             </th>
         </tr>
         <?php
@@ -464,10 +448,10 @@ final class Woo_Taxonomy_SEO {
                         <img src="<?php echo esc_url( $image_url ); ?>" alt="" />
                     </div>
                     <button type="button" class="button wts-upload-image">
-                        <?php esc_html_e( 'Select Image', 'woo-taxonomy-seo' ); ?>
+                        <?php esc_html_e( 'Select Image', 'taxonomy-seo-for-woocommerce' ); ?>
                     </button>
                     <button type="button" class="button wts-remove-image" <?php echo $value ? '' : 'style="display:none;"'; ?>>
-                        <?php esc_html_e( 'Remove Image', 'woo-taxonomy-seo' ); ?>
+                        <?php esc_html_e( 'Remove Image', 'taxonomy-seo-for-woocommerce' ); ?>
                     </button>
                 </div>
                 <?php
@@ -517,7 +501,8 @@ final class Woo_Taxonomy_SEO {
      * @return void
      */
     public function output_seo_meta() {
-        if ( ! is_tax( $this->taxonomies ) ) {
+        // Check if we're on a product category or product tag archive.
+        if ( ! $this->is_supported_taxonomy() ) {
             return;
         }
 
@@ -557,9 +542,11 @@ final class Woo_Taxonomy_SEO {
         $output[] = '<meta name="twitter:card" content="summary_large_image" />';
 
         if ( ! empty( $output ) ) {
-            echo "\n<!-- WooCommerce Taxonomy SEO -->\n";
+            // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- Output is escaped above with esc_attr() and esc_url().
+            echo "\n<!-- Taxonomy SEO for WooCommerce -->\n";
             echo implode( "\n", $output );
-            echo "\n<!-- /WooCommerce Taxonomy SEO -->\n\n";
+            echo "\n<!-- /Taxonomy SEO for WooCommerce -->\n\n";
+            // phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
         }
     }
 
@@ -690,7 +677,7 @@ final class Woo_Taxonomy_SEO {
      * @return array
      */
     public function filter_document_title( $title_parts ) {
-        if ( ! is_tax( $this->taxonomies ) ) {
+        if ( ! $this->is_supported_taxonomy() ) {
             return $title_parts;
         }
 
@@ -716,7 +703,7 @@ final class Woo_Taxonomy_SEO {
      * @return string
      */
     public function filter_yoast_title( $title ) {
-        if ( ! is_tax( $this->taxonomies ) ) {
+        if ( ! $this->is_supported_taxonomy() ) {
             return $title;
         }
 
@@ -751,7 +738,7 @@ final class Woo_Taxonomy_SEO {
         $settings_link = sprintf(
             '<a href="%s">%s</a>',
             admin_url( 'edit-tags.php?taxonomy=product_cat&post_type=product' ),
-            __( 'Categories', 'woo-taxonomy-seo' )
+            __( 'Categories', 'taxonomy-seo-for-woocommerce' )
         );
 
         array_unshift( $links, $settings_link );
@@ -768,6 +755,21 @@ final class Woo_Taxonomy_SEO {
         if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
             \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
         }
+    }
+
+    /**
+     * Check if we're on a supported taxonomy archive page.
+     *
+     * @return bool
+     */
+    public function is_supported_taxonomy() {
+        // Use WooCommerce functions if available (more reliable).
+        if ( function_exists( 'is_product_category' ) && function_exists( 'is_product_tag' ) ) {
+            return is_product_category() || is_product_tag();
+        }
+
+        // Fallback to is_tax() for test environment or when WooCommerce isn't fully loaded.
+        return is_tax( $this->taxonomies );
     }
 
     /**
@@ -794,9 +796,9 @@ final class Woo_Taxonomy_SEO {
  *
  * @return Woo_Taxonomy_SEO
  */
-function woo_taxonomy_seo() {
+function tsfw_get_instance() {
     return Woo_Taxonomy_SEO::instance();
 }
 
 // Initialize the plugin.
-woo_taxonomy_seo();
+tsfw_get_instance();

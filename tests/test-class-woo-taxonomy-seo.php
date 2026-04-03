@@ -41,7 +41,7 @@ class Test_Woo_Taxonomy_SEO extends WP_UnitTestCase {
     public function set_up() {
         parent::set_up();
 
-        $this->plugin = woo_taxonomy_seo();
+        $this->plugin = tsfw_get_instance();
 
         // Use standard WordPress 'category' taxonomy for testing
         // since WooCommerce may not be loaded in test environment.
@@ -88,8 +88,8 @@ class Test_Woo_Taxonomy_SEO extends WP_UnitTestCase {
      * Test singleton pattern.
      */
     public function test_singleton_pattern() {
-        $instance1 = woo_taxonomy_seo();
-        $instance2 = woo_taxonomy_seo();
+        $instance1 = tsfw_get_instance();
+        $instance2 = tsfw_get_instance();
 
         $this->assertSame( $instance1, $instance2 );
     }
